@@ -12,14 +12,14 @@
     display: inline-block;
 }
 
-.caseMur {
+.wallBox {
     background-color: grey;
 }
 
-.caseArme {
+.weaponBox {
     background-color: red;
 }
 
-.casePersonnage {
+.caracterBox {
     background-color: blue;
 }
