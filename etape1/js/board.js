@@ -23,37 +23,46 @@ class Board {
         }
 //*********************** Generate walls ****************************
         
-        this.objectGenerator(wall, width, height, grid);
+        this.objectGenerator(wall, width, height, grid, false);
         
 //*********************** Generate weapons **************************
         
-        this.objectGenerator(weapon, width, height, grid);
+        this.objectGenerator(weapon, width, height, grid, false);
         
 //*********************** Generate caracters ************************
         
-        this.objectGenerator(caracter, width, height, grid);
+        this.objectGenerator(caracter, width, height, grid, true);
              
     } 
     
-    this.objectGenerator = function(object, width, height, grid) {
+    this.objectGenerator = function(object, width, height, grid, unjoined) {
         var singleBox = true;  
+        var originalObject = object;
         
         do {
-            var list = randomIndex(object, width, height, this.occupiedCells); 
+            singleBox = true;
+            
+            var list = randomIndex(object, width, height, this.occupiedCells, unjoined); 
             
             for(var a = 0; a < list.length; a++) {
                 var index = list[a];
-               
+                var line = Math.trunc(index / width);
+                var column = (index % width) -1;
+                
                 if(!this.occupiedCells.includes(index)) {
                     this.occupiedCells.push(index);
                 } else {
                     singleBox = false;
                     alert("Problème de case");
+                    list.splice(a, 1);
+                    this.occupiedCells.pop();
+                    a = a -1;
+                    index = randomIndex(1, width, height, this.occupiedCells, unjoined);
+                    list.push(index[0]);
+                    console.log(list);
+                    object = null;
                 }
-               
-                var line = Math.trunc(index / width);
-                var column = (index % width) -1;
-
+                
                 if((column < 0) && (line > 0)) {
                     line = line -1;
                     column = 9;
@@ -61,29 +70,21 @@ class Board {
                      line = 0;
                      column = 0;
                 }
-               
+
                 if(object == wall) {
                     //console.log("wall");
                     grid[line][column].setWall = 1;
-                    //console.log($("#cell-" + line + '-' + column).addClass('wallBox'));
+                    console.log($("#cell-" + line + '-' + column).addClass('wallBox'));
                 } else if(object == weapon) {
                     //console.log("weapon");
                     grid[line][column].setWeapon = 1;
-                    //console.log($("#cell-" + line + '-' + column).addClass('weaponBox'));
+                    console.log($("#cell-" + line + '-' + column).addClass('weaponBox'));
                 } else if(object == caracter) {
                     //console.log("caracter");
                     grid[line][column].setCaracter = 1;
-                    /*console.log(*/$("#cell-" + line + '-' + column).addClass('caracterBox')/*)*/;
-                    
-                    //console.log(grid[line] && grid[column].includes(grid[line][column].setCaracter = 1));
-                    
-                    // Pour que les caracters ne soient pas côte à côte
-                    /*if() {
-                        alert("STOP");
-                        //newDraw(board, object, width, height);
-                    }*/
+                    console.log($("#cell-" + line + '-' + column).addClass('caracterBox'));
                 }
-                //console.log(grid[line][column]);
+                console.log(grid[line][column]);
             } 
             
         } while(!singleBox)
@@ -93,3 +94,7 @@ class Board {
     
     }   
 }
+
+
+
+                    
