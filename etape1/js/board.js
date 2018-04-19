@@ -56,11 +56,12 @@ class Board {
                     alert("Problème de case");
                     list.splice(a, 1);
                     this.occupiedCells.pop();
-                    a = a -1;
+                    //a = a -1;
                     index = randomIndex(1, width, height, this.occupiedCells, unjoined);
                     list.push(index[0]);
-                    console.log(list);
-                    object = null;
+                    //object = null;
+                    
+                    singleBox = true;
                 }
                 
                 if((column < 0) && (line > 0)) {
@@ -85,7 +86,7 @@ class Board {
                     console.log($("#cell-" + line + '-' + column).addClass('caracterBox'));
                 }
                 console.log(grid[line][column]);
-            } 
+            }
             
         } while(!singleBox)
             
