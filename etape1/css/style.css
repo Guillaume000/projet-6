@@ -13,13 +13,36 @@
 }
 
 .wallBox {
-    background-color: grey;
+    background-image: url(../pictures/wall.png);
+    background-repeat: no-repeat;
 }
 
-.weaponBox {
-    background-color: red;
+.fist {
+    background-image: url(../pictures/fist.ico);
+    background-repeat: no-repeat;
 }
 
-.caracterBox {
-    background-color: blue;
+.remote {
+    background-image: url(../pictures/remote.png);
+    background-repeat: no-repeat;
+}
+
+.newspaper {
+    background-image: url(../pictures/newspaper.png);
+    background-repeat: no-repeat;
+}
+
+.broom {
+    background-image: url(../pictures/broom.png);
+    background-repeat: no-repeat;
+}
+
+.reaper {
+    background-image: url(../pictures/reaper.png);
+    background-repeat: no-repeat;
+}
+
+.monster {
+    background-image: url(../pictures/monster.png);
+    background-repeat: no-repeat;
 }

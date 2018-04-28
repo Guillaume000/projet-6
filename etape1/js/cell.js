@@ -1,11 +1,11 @@
 class Cell {
     constructor(lineIndex, columnIndex) {
-        this.line = lineIndex;
+        this.line   = lineIndex;
         this.column = columnIndex;
 
-        this.caracter = 0;
-        this.weapon = 0;
-        this.wall = 0;
+        this.character = 0;
+        this.weapon   = 0;
+        this.wall     = 0;
     }
     
     get getWall() {     
@@ -16,8 +16,8 @@ class Cell {
         return this.weapon;
     }
     
-    get getCaracter() {
-        return this.caracter;
+    get getcharacter() {
+        return this.character;
     }
     
     get getLine() {
@@ -29,8 +29,8 @@ class Cell {
     }
     
     
-    set setCaracter(value) {
-        this.caracter = value;
+    set setcharacter(value) {
+        this.character = value;
     }
     
     set setWeapon(value) {
